@@ -1,8 +1,7 @@
-import { Asset } from "expo-asset";
 import Constants from "expo-constants";
-import * as SplashScreen from "expo-splash-screen";
 import * as Updates from "expo-updates";
 import { useCallback, useEffect, useMemo, useState } from "react";
+// import AnimatedAppLoader from './splashscreen';
 import {
   Animated,
   Button,
@@ -29,7 +28,9 @@ export default function LaunchScreen() {
     }
   }, []);
 
+  console.log('Constants.manifest.splash.image: ', Constants)
   return (
+    // <AnimatedAppLoader image={{ uri: Constants.manifest.splash.image }}>
     <View style={styles.container}>
       <Text
         style={{
@@ -39,9 +40,10 @@ export default function LaunchScreen() {
           fontWeight: "bold",
         }}
       >
-        Pretty Cool!!!
+        Pretty Cool!
       </Text>
       <Button title="Run Again" onPress={onReloadPress} />
     </View>
+    // </AnimatedAppLoader>
   );
 }
