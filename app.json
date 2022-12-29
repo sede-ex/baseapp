@@ -1,11 +1,34 @@
 {
   "expo": {
+    "name": "HelloWorld",
+    "slug": "expo-template-tabs",
+    "version": "1.0.0",
+    "orientation": "portrait",
     "icon": "https://github.com/expo/expo/blob/master/templates/expo-template-blank/assets/icon.png?raw=true",
     "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "https://github.com/expo/expo/blob/master/templates/expo-template-blank/assets/splash.png?raw=true",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png"
     }
   }
 }
