@@ -1,13 +1,26 @@
 import React from 'react';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
-  View,
   Text
 } from "react-native";
+import { FocusAwareStatusBar } from '../components/FocusStatusBar';
 
 export default function Notifications() {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <SafeAreaView
+      style={{
+        // paddingTop: insets.top,
+        paddingBottom: insets.bottom,
+        flex: 1,
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}
+    >
+      <FocusAwareStatusBar barStyle="light-content" backgroundColor="#6a51ae" style="auto" />
       <Text>Notifications Screen</Text>
-    </View>
+      <Text>This is bottom text.</Text>
+    </SafeAreaView>
   );
 }

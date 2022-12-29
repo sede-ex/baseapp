@@ -1,13 +1,18 @@
-import { NavigationContainer } from '@react-navigation/native';
 // import { useSelector } from 'react-redux';
-import { HomeTab } from './homeTab';
-import Notifications from './notification';
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from "@react-navigation/native";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItemList,
   DrawerItem,
 } from '@react-navigation/drawer';
+import { HomeTab } from './homeTab';
+import Notifications from './notification';
+import LinkingConfiguration from "./LinkingConfiguration";
 
 
 function CustomDrawerContent(props) {
@@ -27,7 +32,7 @@ function CustomDrawerContent(props) {
 }
 
 
-export default () => {
+export default ({ colorScheme }) => {
   const { Navigator, Screen } = createDrawerNavigator();
 
   const loggedin = true;
@@ -61,7 +66,10 @@ export default () => {
   };
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      linking={LinkingConfiguration}
+      theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+    >
       <CurrentNavigator />
     </NavigationContainer>
   );
