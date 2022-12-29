@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
 });
 
 
-
 export default function LaunchScreen() {
   const onReloadPress = useCallback(() => {
     if (Platform.OS === "web") {
