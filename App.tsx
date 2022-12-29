@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import LaunchScreen from './src/scenes/launch';
+import LaunchScreen from './src/screen/launch';
 import RootNavigator from './src/navigation';
 
 export default function App() {

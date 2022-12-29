@@ -1,8 +1,8 @@
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import homeScreen from '../scenes/home/homeScreen';
-import secondScreen from '../scenes/home/secondScreen';
+import homeScreen from '../screen/home/homeScreen';
+import secondScreen from '../screen/home/secondScreen';
 // import Ionicons from "@expo/vector-icons/Ionicons";
 // import { useColorScheme } from "react-native";
 
