@@ -1,9 +1,8 @@
 import Constants from "expo-constants";
 import * as Updates from "expo-updates";
 import { useCallback, useEffect, useMemo, useState } from "react";
-// import AnimatedAppLoader from './splashscreen';
+import AnimatedAppLoader from './splashscreen';
 import {
-  Animated,
   Button,
   Platform,
   StyleSheet,
@@ -14,7 +13,11 @@ import {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: "plum",
+    flex: 1,
+    // backgroundColor: '#fff',
+    backgroundColor: "plum",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
@@ -28,22 +31,22 @@ export default function LaunchScreen() {
     }
   }, []);
 
-  console.log('Constants.manifest.splash.image: ', Constants)
+  console.log('Constants.manifest.splash.image: ', Constants.manifest)
   return (
-    // <AnimatedAppLoader image={{ uri: Constants.manifest.splash.image }}>
-    <View style={styles.container}>
-      <Text
-        style={{
-          color: "black",
-          fontSize: 30,
-          marginBottom: 15,
-          fontWeight: "bold",
-        }}
-      >
-        Pretty Cool!
-      </Text>
-      <Button title="Run Again" onPress={onReloadPress} />
-    </View>
-    // </AnimatedAppLoader>
+    <AnimatedAppLoader image={{ uri: Constants.manifest.splash.image }}>
+      <View style={styles.container}>
+        <Text
+          style={{
+            color: "black",
+            fontSize: 30,
+            marginBottom: 15,
+            fontWeight: "bold",
+          }}
+        >
+          Pretty Cool!
+        </Text>
+        <Button title="Run Again" onPress={onReloadPress} />
+      </View>
+    </AnimatedAppLoader>
   );
 }
