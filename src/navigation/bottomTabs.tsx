@@ -3,10 +3,11 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import homeScreen from '../screen/home/homeScreen';
 import secondScreen from '../screen/home/secondScreen';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 // import Ionicons from "@expo/vector-icons/Ionicons";
 // import { useColorScheme } from "react-native";
 
-export function HomeTab() {
+export default function ButtomTab() {
   const { Navigator, Screen } = createBottomTabNavigator();
 
   const tabNavProps = {
@@ -18,10 +19,10 @@ export function HomeTab() {
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
         switch (route.name) {
-          case 'Tab A':
+          case 'Home':
             iconName = focused ? 'home-circle' : 'home-circle-outline';
             break;
-          case 'Tab B':
+          case 'Settings':
             iconName = focused ? 'account-circle' : 'account-circle-outline';
             break;
           default:
@@ -33,9 +34,11 @@ export function HomeTab() {
   };
 
   return (
-    <Navigator {...tabNavProps}>
-      <Screen name="Tab A" component={homeScreen} />
-      <Screen name="Tab B" component={secondScreen} />
+    <Navigator
+      {...tabNavProps}
+    >
+      <Screen name="Home" component={homeScreen} />
+      <Screen name="Settings" component={secondScreen} />
     </Navigator>
   );
 }

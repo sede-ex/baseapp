@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import {MMKV} from 'react-native-mmkv';
-import rootReducer from '@app/redux/reducers';
+import rootReducer from '../reducers';
 
 const storage = new MMKV();
 const reduxStorage = {
