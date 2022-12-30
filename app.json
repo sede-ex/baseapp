@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "HelloWorld",
+    "name": "NativeBizz",
     "slug": "expo-template-tabs",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,8 +9,9 @@
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "https://github.com/expo/expo/blob/master/templates/expo-template-blank/assets/splash.png?raw=true",
+      "image2": "./assets/images/favicon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FEF9B0"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
