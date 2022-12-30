@@ -15,8 +15,11 @@ export default function MyTopTabs() {
         paddingTop: insets.top,
         paddingBottom: insets.bottom,
       }}
+      initialRouteName="Home"
       screenOptions={{
         tabBarLabelStyle: { fontSize: 12 },
+        tabBarActiveTintColor: 'tomato',
+        tabBarInactiveTintColor: 'gray',
         // tabBarItemStyle: { width: 100 },
         // tabBarStyle: { backgroundColor: 'powderblue' },
       }}
