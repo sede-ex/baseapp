@@ -1,38 +1,57 @@
+import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import LaunchScreen from './src/screen/launch';
+import LaunchScreen, { LoadScreenGracefully } from './src/screen/launch';
 import RootNavigator from './src/navigation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import FlashMessage from 'react-native-flash-message';
 import { useLoadedAssets } from "./src/hooks/useLoadedAssets";
-import { useColorScheme } from "react-native";
+import { useColorScheme, LogBox } from "react-native";
+import * as SplashScreen from 'expo-splash-screen';
+
+// LogBox.ignoreLogs([
+//   'The new TextField implementation does not support the',
+//   'Warning: Function components cannot be given refs.',
+// ]);
+
 
 export default function App() {
   const isLoadingComplete = useLoadedAssets();
   const colorScheme = useColorScheme();
 
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <SafeAreaProvider>
-        <View style={styles.container}>
+  const onLayoutRootView = useCallback(async () => {
+    if (isLoadingComplete) {
+      // This tells the splash screen to hide immediately! If we call this after
+      // `setAppIsReady`, then we may see a blank screen while the app is
+      // loading its initial state and rendering its first pixels. So instead,
+      // we hide the splash screen once we know the root view has already
+      // performed layout.
+      await SplashScreen.hideAsync();
+    }
 
-          {/* <Text>Welcome to bizz app</Text> */}
-          {/* <LaunchScreen /> */}
-          <FlashMessage
-            style={{
-              paddingTop: 30,
-            }}
-            position="top"
-            duration={2500}
-          />
-          <RootNavigator colorScheme={colorScheme} />
-          <StatusBar style="auto" />
-        </View>
-      </SafeAreaProvider>
-    );
+  }, [isLoadingComplete]);
+
+  if (!isLoadingComplete) {
+    return <LaunchScreen />;
   }
+
+  return (
+    <SafeAreaProvider>
+      <View style={styles.container} onLayout={onLayoutRootView}>
+        <FlashMessage
+          style={{
+            paddingTop: 30,
+          }}
+          position="top"
+          duration={2500}
+        />
+        <LoadScreenGracefully>
+          <RootNavigator colorScheme={colorScheme} />
+        </LoadScreenGracefully>
+        <StatusBar style="auto" />
+      </View>
+    </SafeAreaProvider>
+  );
 }
 
 const styles = StyleSheet.create({

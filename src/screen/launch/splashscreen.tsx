@@ -8,6 +8,8 @@ import {
   View,
 } from "react-native";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function AnimatedAppLoader({ children, image }) {
   const [isSplashReady, setSplashReady] = useState(false);
 
@@ -45,7 +47,7 @@ function AnimatedSplashScreen({ children, image }) {
 
   const onImageLoaded = useCallback(async () => {
     try {
-      await SplashScreen.hideAsync();
+      // await SplashScreen.hideAsync();
       // Load stuff
       await Promise.all([]);
     } catch (e) {

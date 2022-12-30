@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 });
 
 
-export default function LaunchScreen() {
+export function LoadScreenGracefully({ children }) {
   const onReloadPress = useCallback(() => {
     if (Platform.OS === "web") {
       location.reload();
@@ -34,6 +34,25 @@ export default function LaunchScreen() {
   console.log('Constants.manifest.splash.image: ', Constants.manifest)
   return (
     <AnimatedAppLoader image={{ uri: Constants.manifest.splash.image }}>
+      {/**/}
+      {children}
+      <Button title="Run Again" onPress={onReloadPress} />
+    </AnimatedAppLoader>
+  );
+}
+
+export default function LaunchScreen() {
+  const onReloadPress = useCallback(() => {
+    if (Platform.OS === "web") {
+      location.reload();
+    } else {
+      Updates.reloadAsync();
+    }
+  }, []);
+
+  console.log('Constants.manifest.splash.image: ', Constants.manifest)
+  return (
+    <LoadScreenGracefully>
       <View style={styles.container}>
         <Text
           style={{
@@ -43,10 +62,10 @@ export default function LaunchScreen() {
             fontWeight: "bold",
           }}
         >
-          Pretty Cool!
+          Welcome to Bizz!
         </Text>
         <Button title="Run Again" onPress={onReloadPress} />
       </View>
-    </AnimatedAppLoader>
+    </LoadScreenGracefully>
   );
 }
