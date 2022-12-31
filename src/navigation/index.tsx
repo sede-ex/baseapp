@@ -7,7 +7,8 @@ import {
 import {
   createDrawerNavigator
 } from '@react-navigation/drawer';
-import MainTabs from './bottomTabs';
+import MainTabs from './chatNav';
+// import MainTabs from './bottomTabs';
 // import MainTabs from './topTabs';
 import Notifications from './notification';
 import LinkingConfiguration from "./LinkingConfiguration";
@@ -55,6 +56,7 @@ export default ({ colorScheme }) => {
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
       <RootNavigator />
+      {/* <MainTabs /> */}
     </NavigationContainer>
   );
 };
