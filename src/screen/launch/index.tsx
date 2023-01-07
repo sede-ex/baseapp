@@ -36,7 +36,7 @@ export function LoadScreenGracefully({ children }) {
     <AnimatedAppLoader image={{ uri: Constants.manifest.splash.image }}>
       {/**/}
       {children}
-      <Button title="Run Again" onPress={onReloadPress} />
+      {/* <Button title="Run Again" onPress={onReloadPress} /> */}
     </AnimatedAppLoader>
   );
 }

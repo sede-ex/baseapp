@@ -57,10 +57,11 @@ export default function BottomTabNavigator() {
               color={"royalblue"}
               style={{ marginRight: 15 }}
             />)
-        })} />
+        })}
+      />
       <Screen name="Explore" component={ChatStacktNavigator}
         options={({ navigation }) => ({
-          tabBarIcon: makeIconRender("home"),
+          tabBarIcon: ({ color, size }) => (<Ionicons name="apps-outline" size={size} color={color} />),
           headerRight: () => (
             <Entypo
               onPress={() => navigation.navigate('Contacts')}
@@ -69,12 +70,15 @@ export default function BottomTabNavigator() {
               color={"royalblue"}
               style={{ marginRight: 15 }}
             />)
-        })} />
+        })}
+      />
       <Screen name="Latest Posts" component={LatestStacktNavigator}
         options={{
-          tabBarIcon: ({ color, size }) => (<Ionicons name="ios-chatbubbles-sharp" size={size} color={color} />)
+          tabBarIcon: ({ color, size }) => (<Ionicons name="newspaper-outline" size={size} color={color} />),
+          // tabBarIcon: makeIconRender("home"),
         }}
       />
+
       {/* <Screen name="Status" component={NotImplementedScreen}
         options={{ tabBarIcon: ({ color, size }) => (<Ionicons name="logo-whatsapp" size={size} color={color} />) }} /> */}
       {/* <Screen name="Calls" component={NotImplementedScreen}
