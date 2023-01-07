@@ -6,10 +6,12 @@ import {
   View,
   Button
 } from "react-native";
+import { FocusAwareStatusBar } from '../../components/FocusStatusBar';
 
 export default function TabOneScreen({ navigation }) {
   return (
     <View style={styles.container}>
+      <FocusAwareStatusBar barStyle="light-content" backgroundColor="#6a51ae" style="auto" />
       <Text style={styles.title}>Tab One</Text>
       <Button title="Open drawer" onPress={() => navigation.toggleDrawer()} />
       <View

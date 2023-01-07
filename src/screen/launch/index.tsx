@@ -31,7 +31,7 @@ export function LoadScreenGracefully({ children }) {
     }
   }, []);
 
-  console.log('Constants.manifest.splash.image: ', Constants.manifest)
+  console.log('Constants.manifest.splash.image: ', Constants.manifest.splash.image)
   return (
     <AnimatedAppLoader image={{ uri: Constants.manifest.splash.image }}>
       {/**/}

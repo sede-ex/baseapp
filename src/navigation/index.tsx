@@ -7,12 +7,13 @@ import {
 import {
   createDrawerNavigator
 } from '@react-navigation/drawer';
-import MainTabs from './chatNav';
-// import MainTabs from './bottomTabs';
+// import MainDrawerTabs from './MainDrawerTabs';
+import BottomTabNavigator from './bottomTabs';
 // import MainTabs from './topTabs';
 import Notifications from './notification';
 import LinkingConfiguration from "./LinkingConfiguration";
-import { CustomDrawerContent } from "./customDrawerContent"
+import { CustomDrawerContent } from "./customDrawerContent";
+import SecondScreen from '../screen/home/secondScreen';
 
 const RootNavigator = () => {
   const { Navigator, Screen } = createDrawerNavigator();
@@ -22,7 +23,7 @@ const RootNavigator = () => {
 
   if (loggedin) {
     const drawerNavProps = {
-      initialRouteName: 'Home',
+      initialRouteName: 'Main Drawer',
       screenOptions: {
         headerShown: false,
         swipeEnabled: false,
@@ -36,13 +37,14 @@ const RootNavigator = () => {
         useLegacyImplementation
         drawerContent={(props) => <CustomDrawerContent {...props} />}
       >
-        <Screen name="Main" component={MainTabs} />
+        <Screen name="Main Drawer" component={BottomTabNavigator} />
         {/* <Screen name="Main" component={MyTopTabs} /> */}
         <Screen name="Notifications" component={Notifications} />
+        <Screen name="Settings" component={SecondScreen} />
       </Navigator>
     );
   } else {
-    return <MainTabs />;
+    return <BottomTabNavigator />;
     // return <LoginStack />;
   }
 };
